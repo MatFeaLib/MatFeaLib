@@ -1,0 +1,4 @@
+# Packages required to build docs
+
+sphinx_rtd_theme
+sphinx-prompt
