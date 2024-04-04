@@ -1,0 +1,18 @@
+
+
+The following updates have been made:
+
+# Feb 2, 2024 (13 Bahman 1402)
+- The fetch.py file has been changed to elemental.py.
+- The fetch_features function in elemental.py ranamed to fetch_elemental_features.
+- The statistical.py has been added to the package to optain statistical features. they include `min`, `max`, `sum`, `diff`, `mean`, `std` of elemental features.  
+- The biulding_blucks function in db.py has been updated to show error message from undefined elements. 
+
+# Jan 25, 2024 (5 Bahman 1402 - 13:10)
+- The `fetch_features` function in fetch.py has been updated and the `get_feature_values_df` function in fetch.py restored to previous version.
+
+# Jan 24, 2024 (4 Bahman 1402 - 22:17)
+- The `building_blocks_df` in base.py and `get_feature_values_df` in fetch.py have been updated due to affect on the inputed dataframe.
+
+# Dec 18, 2024 (27 Azar 1402 - 23:13)
+- The `building_blocks_df` function in base.py has been updated.
