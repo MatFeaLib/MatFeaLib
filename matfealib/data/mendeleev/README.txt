@@ -1,1 +1,1 @@
-This features provides an API for accessing various properties of elements from the periodic table of elements.
+This features obtained from mendeleev package [https://mendeleev.readthedocs.io/en/stable/].

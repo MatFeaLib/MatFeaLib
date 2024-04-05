@@ -1,1 +1,1 @@
-This features provides an API for accessing various properties of elements from the periodic table of elements.
+This collection includes properties of elements from the matminer package [https://hackingmaterials.lbl.gov/matminer/].

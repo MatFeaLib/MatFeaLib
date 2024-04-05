@@ -8,8 +8,8 @@
 
 
 
-.. image:: ./_static/MatFeaLib-logo-04.png
-   :width: 903 px
+.. image:: ./_static/MatFeaLib.png
+   :width: 450 px
    :alt: MatFeaLib
    :align: center
 
