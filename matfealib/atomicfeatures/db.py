@@ -1,5 +1,6 @@
 
 import pandas as pd
+import numpy as np
 import os
 
 module_dir = os.path.dirname(os.path.abspath(__file__))
@@ -39,11 +40,13 @@ def available_collection():
             description.append(lines[0].rstrip())
     lst.append(description)
     df = pd.DataFrame(lst).transpose()
-    df.columns=['collection','description']
+    df.columns=['Collection','Description']
+    df.sort_values("Collection",inplace=True)
+    df.index = np.arange(1, len(df)+1)
     pd.set_option("display.max_colwidth", None)
-#    df = df.style.set_properties(**{'text-align': 'left'})
-#    df = df.set_table_styles([dict(selector = 'th', props=[('text-align', 'left')])])
-    return df
+    df_ = df.style.set_table_styles([dict(selector = 'th', props=[('text-align', 'left')])])
+    df_.set_properties(**{'text-align': 'left'})
+    return df_
 
 def available_features(feature_collection):
     """

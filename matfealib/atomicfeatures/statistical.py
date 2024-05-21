@@ -1,6 +1,7 @@
 
 import numpy as np
 import pandas as pd
+from scipy import stats
 # import re
 from .base import building_blocks
 from pandas.api.types import is_numeric_dtype
@@ -19,12 +20,13 @@ def statistical_feature_values(compound,feature_collection,feature_name,statisti
     min_value    = stats_fea_vals_array.min()
     max_value    = stats_fea_vals_array.max()
     sum_value    = stats_fea_vals_array.sum()
-    diff_value   = min_value=max_value-min_value
+    diff_value   = max_value-min_value
     mean_value   = stats_fea_vals_array.mean()
     std_value    = stats_fea_vals_array.std()
     # median_value = stat_fea_vals_array.median()
+    gmean_value  = stats.gmean(stats_fea_vals_array)
 
-    tmp_dict={'min':min_value, 'max':max_value, 'sum':sum_value, 'diff':diff_value, 'mean':mean_value, 'std':std_value}
+    tmp_dict={'min':min_value, 'max':max_value, 'sum':sum_value, 'diff':diff_value, 'mean':mean_value, 'std':std_value, 'gmean':gmean_value}
 
     if (statistical_functions=='all'):
         for i in tmp_dict.keys():
