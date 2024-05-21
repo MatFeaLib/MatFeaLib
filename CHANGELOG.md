@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add DFT elemental data to the package.
-- Add the gmean() function to statistical features.
+- Add some statistical functions to statistical features.
 
 ### Fixed
 

@@ -15,18 +15,51 @@ def statistical_feature_values(compound,feature_collection,feature_name,statisti
         tmp_val = feature_collection.loc[feature_collection['chemical_symbol'] == atom][feature_name].values
         stats_fea_vals.append(tmp_val[0])
 
-    stats_fea_vals_array = np.array(stats_fea_vals)
+    #stats_fea_vals_array = np.array(stats_fea_vals)
 
-    min_value    = stats_fea_vals_array.min()
-    max_value    = stats_fea_vals_array.max()
-    sum_value    = stats_fea_vals_array.sum()
-    diff_value   = max_value-min_value
-    mean_value   = stats_fea_vals_array.mean()
-    std_value    = stats_fea_vals_array.std()
-    # median_value = stat_fea_vals_array.median()
-    gmean_value  = stats.gmean(stats_fea_vals_array)
+    min_value      = np.min(stats_fea_vals)
+    max_value      = np.max(stats_fea_vals)
+    sum_value      = np.sum(stats_fea_vals)
+    mean_value     = np.mean(stats_fea_vals)
+    std_value      = np.std(stats_fea_vals)
+    var_value      = np.var(stats_fea_vals)
+    median_value   = np.median(stats_fea_vals)
+    diff_value     = max_value-min_value
+    gmean_value    = stats.gmean(stats_fea_vals)
+    hmean_value    = stats.hmean(stats_fea_vals)
+    pmean_value    = stats.pmean(stats_fea_vals,2)
+    kur_value      = stats.kurtosis(stats_fea_vals)
+    mom_value      = stats.moment(stats_fea_vals,3)
+    expc_value     = stats.expectile(stats_fea_vals)
+    skew_value     = stats.skew(stats_fea_vals)
+    gstd_value     = stats.gstd(stats_fea_vals)
+    iqr_value      = stats.iqr(stats_fea_vals)
+    ent_value      = stats.entropy(stats_fea_vals)
+    #diff_ent_value = stats.differential_entropy(stats_fea_vals)
+    MAD_value      = stats.median_abs_deviation(stats_fea_vals)
 
-    tmp_dict={'min':min_value, 'max':max_value, 'sum':sum_value, 'diff':diff_value, 'mean':mean_value, 'std':std_value, 'gmean':gmean_value}
+
+    tmp_dict={'min':min_value, 
+              'max':max_value, 
+              'sum':sum_value, 
+              'diff':diff_value, 
+              'mean':mean_value, 
+              'std':std_value, 
+              'median':median_value,
+              'var':var_value,
+              'gmean':gmean_value, 
+              'hmean':hmean_value,
+              'pmean':pmean_value, 
+              'kurtosis':kur_value, 
+              'moment':mom_value, 
+              'expectile':expc_value, 
+              'skew':skew_value, 
+              'gstd':gstd_value, 
+              'iqr':iqr_value, 
+              'entropy':ent_value, 
+              'MAD':MAD_value
+             }
+
 
     if (statistical_functions=='all'):
         for i in tmp_dict.keys():
