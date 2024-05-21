@@ -7,7 +7,8 @@ name = "matfealib"
 version = "0.1.0a"
 dependencies = [
   "numpy",
-  "pandas"
+  "pandas",
+  "scipy>1.9"
 ]
 requires-python = ">=3.8"
 authors = [
