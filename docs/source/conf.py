@@ -15,7 +15,8 @@ author = 'MatFeaLib Developers'
 
 extensions = [
         'sphinx_rtd_theme',
-        'sphinx-prompt'
+        'sphinx-prompt',
+        'nbsphinx'
         ]
 
 templates_path = ['_templates']
