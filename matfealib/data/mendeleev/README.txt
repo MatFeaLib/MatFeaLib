@@ -1,1 +1,1 @@
-This features obtained from mendeleev package [https://mendeleev.readthedocs.io/en/stable/].
+The atomic properties from the mendeleev package [https://mendeleev.readthedocs.io/en/stable/].

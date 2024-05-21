@@ -1,0 +1,1 @@
+Several calculated atomic properties by using the Local-density approximation (LDA) parameterized by Perdew and Wang (PW), the numeric atom-centered orbitals (NAOs) basis set, and the "really_tight" setting, which is accessible from FHI as the source [https://gitlab.mpcdf.mpg.de/nomad-lab/atomic_features_fhi_aims_really_tight/-/tree/master/csv].

@@ -1,0 +1,1 @@
+Several calculated atomic properties by using the HSE06 hybrid functional, the numeric atom-centered orbitals (NAOs) basis set, and the "really_tight" setting, accessible from FHI as the source [https://gitlab.mpcdf.mpg.de/nomad-lab/atomic_features_fhi_aims_really_tight/-/tree/master/csv].

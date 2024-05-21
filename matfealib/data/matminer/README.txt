@@ -1,1 +1,1 @@
-This collection includes properties of elements from the matminer package [https://hackingmaterials.lbl.gov/matminer/].
+The atomic properties from the matminer package. [https://hackingmaterials.lbl.gov/matminer/].
