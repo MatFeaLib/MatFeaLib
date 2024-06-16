@@ -25,6 +25,8 @@ from matfealib.atomicfeatures.features import available_features
 from matfealib.atomicfeatures.features import fetch_elemental_features
 from matfealib.atomicfeatures.features import fetch_statistical_features
 
+from matfealib.plot.periodic_table import periodic_table
+
 __all__ = [
     "available_collection",
     "available_features",
@@ -45,5 +47,6 @@ __all__ = [
     "dft_pbe0_spins",
     "dft_hse06",
     "dft_hse06_spins",
-    "lda2015"
+    "lda2015",
+    "periodic_table"
     ]

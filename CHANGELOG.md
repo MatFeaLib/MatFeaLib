@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add DFT elemental data to the package.
 - Add some statistical functions to statistical features.
+- Add a periodic table visualization function.
 
 ### Fixed
 

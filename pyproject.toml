@@ -8,7 +8,10 @@ version = "0.1.0a"
 dependencies = [
   "numpy",
   "pandas",
-  "scipy>1.9"
+  "scipy>1.9",
+  "matplotlib",
+  "plotly",
+  "kaleido",
 ]
 requires-python = ">=3.8"
 authors = [
