@@ -40,7 +40,18 @@ The ``fetch_statistical_features`` method returns statistical features of a give
 
 .. code-block:: python
 
-   fetch_statistical_features(compound(s), collection="collection name", features='all')
+   fetch_statistical_features(compound(s), 
+                              collection="collection name",
+                              features='all', 
+                              statistical_functions='all')
+
+To visualize atomic features in the periodic table of elements, the ``periodic_table`` method can be used. 
+The method has a heatmap option. If True, it creates a periodic table heatmap of the atomic features:
+
+.. code-block:: python
+   
+   periodic_table(data="pd.DataFrame",feature_name='str',heatmap=True)
+
 
 
 
