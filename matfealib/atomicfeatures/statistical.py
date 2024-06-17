@@ -15,70 +15,216 @@ def statistical_feature_values(compound,feature_collection,feature_name,statisti
         tmp_val = feature_collection.loc[feature_collection['chemical_symbol'] == atom][feature_name].values
         stats_fea_vals.append(tmp_val[0])
 
-    #stats_fea_vals_array = np.array(stats_fea_vals)
-
-    min_value      = np.min(stats_fea_vals)
-    max_value      = np.max(stats_fea_vals)
-    sum_value      = np.sum(stats_fea_vals)
-    mean_value     = np.mean(stats_fea_vals)
-    std_value      = np.std(stats_fea_vals)
-    var_value      = np.var(stats_fea_vals)
-    median_value   = np.median(stats_fea_vals)
-    diff_value     = max_value-min_value
-    gmean_value    = stats.gmean(stats_fea_vals)
-    hmean_value    = stats.hmean(stats_fea_vals)
-    pmean_value    = stats.pmean(stats_fea_vals,2)
-    kur_value      = stats.kurtosis(stats_fea_vals)
-    mom_value      = stats.moment(stats_fea_vals,3)
-    expc_value     = stats.expectile(stats_fea_vals)
-    skew_value     = stats.skew(stats_fea_vals)
-    gstd_value     = stats.gstd(stats_fea_vals)
-    iqr_value      = stats.iqr(stats_fea_vals)
-    ent_value      = stats.entropy(stats_fea_vals)
-    #diff_ent_value = stats.differential_entropy(stats_fea_vals)
-    MAD_value      = stats.median_abs_deviation(stats_fea_vals)
-
-
-    tmp_dict={'min':min_value, 
-              'max':max_value, 
-              'sum':sum_value, 
-              'diff':diff_value, 
-              'mean':mean_value, 
-              'std':std_value, 
-              'median':median_value,
-              'var':var_value,
-              'gmean':gmean_value, 
-              'hmean':hmean_value,
-              'pmean':pmean_value, 
-              'kurtosis':kur_value, 
-              'moment':mom_value, 
-              'expectile':expc_value, 
-              'skew':skew_value, 
-              'gstd':gstd_value, 
-              'iqr':iqr_value, 
-              'entropy':ent_value, 
-              'MAD':MAD_value
-             }
-
-
     if (statistical_functions=='all'):
+        min_value      = np.min(stats_fea_vals)
+        max_value      = np.max(stats_fea_vals)
+        sum_value      = np.sum(stats_fea_vals)
+        mean_value     = np.mean(stats_fea_vals)
+        std_value      = np.std(stats_fea_vals)
+        var_value      = np.var(stats_fea_vals)
+        median_value   = np.median(stats_fea_vals)
+        diff_value     = max_value-min_value
+        gmean_value    = stats.gmean(stats_fea_vals)
+        hmean_value    = stats.hmean(stats_fea_vals)
+        pmean_value    = stats.pmean(stats_fea_vals,2)
+        kur_value      = stats.kurtosis(stats_fea_vals)
+        mom_value      = stats.moment(stats_fea_vals,3)
+        expc_value     = stats.expectile(stats_fea_vals)
+        skew_value     = stats.skew(stats_fea_vals)
+        gstd_value     = stats.gstd(stats_fea_vals)
+        iqr_value      = stats.iqr(stats_fea_vals)
+        ent_value      = stats.entropy(stats_fea_vals)
+        # diff_ent_value = stats.differential_entropy(stats_fea_vals)
+        MAD_value      = stats.median_abs_deviation(stats_fea_vals)
+
+        tmp_dict={'min':min_value, 'max':max_value, 'sum':sum_value, 
+                  'diff':diff_value, 'mean':mean_value, 'std':std_value, 
+                  'median':median_value, 'var':var_value, 'gmean':gmean_value, 
+                  'hmean':hmean_value, 'pmean': pmean_value, 'kurtosis':kur_value, 
+                  'moment':mom_value, 'expectile':expc_value, 'skew':skew_value, 
+                  'gstd':gstd_value, 'iqr':iqr_value, 'entropy':ent_value, 
+                  'MAD':MAD_value}
+        
         for i in tmp_dict.keys():
             column_names.append(feature_name+'_{}'.format(i))
         return column_names, list(tmp_dict.values())
+    
     elif isinstance(statistical_functions, list):
         tmp_lst=[]
         for i in statistical_functions:
-            column_names.append(feature_name+'_{}'.format(i))
-            tmp_lst.append(tmp_dict[i])
+            if i == 'min':
+                min_value = np.min(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(min_value)
+            if i == 'max':
+                max_value = np.max(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(max_value)
+            if i == 'sum':
+                sum_value = np.sum(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(sum_value)
+            if i == 'mean':
+                mean_value = np.mean(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(mean_value)
+            if i == 'std':
+                std_value = np.std(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(std_value)
+            if i == 'var':
+                var_value = np.var(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(var_value)
+            if i == 'median':
+                median_value = np.var(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(median_value)
+            if i == 'diff':
+                diff_value = (np.max(stats_fea_vals)) - (np.min(stats_fea_vals))
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(diff_value)
+            if i == 'gmean':
+                gmean_value = stats.gmean(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(gmean_value)
+            if i == 'hmean':
+                hmean_value = stats.hmean(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(hmean_value)
+            if i == 'pmean':
+                pmean_value = stats.pmean(stats_fea_vals, 2)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(pmean_value)
+            if i == 'kurtosis':
+                kur_value = stats.kurtosis(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(kur_value)
+            if i == 'moment':
+                mom_value = stats.moment(stats_fea_vals, 3)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(mom_value)
+            if i == 'expc':
+                expc_value = stats.expectile(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(expc_value)
+            if i == 'skew':
+                skew_value = stats.skew(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(skew_value)
+            if i == 'gstd':
+                gstd_value = stats.gstd(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(gstd_value)
+            if i == 'iqr':
+                iqr_value = stats.iqr(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(iqr_value)
+            if i == 'entropy':
+                ent_value = stats.entropy(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(ent_value)
+            if i == 'differential_entropy':
+                diff_ent_value = stats.differential_entropy(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(diff_ent_value)
+            if i == 'MAD':
+                MAD_value = stats.median_abs_deviation(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(MAD_value)
+                
         return column_names,tmp_lst
+    
     elif statistical_functions != 'all' and isinstance(statistical_functions, str):
-        if statistical_functions not in tmp_dict.keys():
+        tmp_dict={'min', 'max', 'sum', 'diff', 'mean', 'std', 'median', 'var', 
+                  'gmean', 'hmean', 'pmean', 'kurtosis', 'moment', 'expectile', 
+                  'skew', 'gstd', 'iqr', 'entropy', 'differential_entropy', 'MAD'}
+        if statistical_functions not in tmp_dict:
             raise ValueError("The `statistical_functions` parameter should be one of the `min`, `max`, `sum`, `diff`, `mean`, `median` or `all` valuse")
         else:
             tmp_lst=[]
-            column_names.append(feature_name+'_{}'.format(statistical_functions))
-            tmp_lst.append(tmp_dict[statistical_functions])
-            return column_names,tmp_lst
+            if statistical_functions == 'min':
+                min_value = np.min(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(min_value)
+            if statistical_functions == 'max':
+                max_value = np.max(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(max_value)
+            if statistical_functions == 'sum':
+                sum_value = np.sum(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(sum_value)
+            if statistical_functions == 'mean':
+                mean_value = np.mean(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(mean_value)
+            if statistical_functions == 'std':
+                std_value = np.std(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(std_value)
+            if statistical_functions == 'var':
+                var_value = np.var(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(var_value)
+            if statistical_functions == 'median':
+                median_value = np.var(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(median_value)
+            if statistical_functions == 'diff':
+                diff_value = (np.max(stats_fea_vals)) - (np.min(stats_fea_vals))
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(diff_value)
+            if statistical_functions == 'gmean':
+                gmean_value = stats.gmean(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(gmean_value)
+            if statistical_functions == 'hmean':
+                hmean_value = stats.hmean(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(hmean_value)
+            if statistical_functions == 'pmean':
+                pmean_value = stats.pmean(stats_fea_vals, 2)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(pmean_value)
+            if statistical_functions == 'kurtosis':
+                kur_value = stats.kurtosis(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(kur_value)
+            if statistical_functions == 'moment':
+                mom_value = stats.moment(stats_fea_vals, 3)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(mom_value)
+            if statistical_functions == 'expectile':
+                expc_value = stats.expectile(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(expc_value)
+            if statistical_functions == 'skew':
+                skew_value = stats.skew(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(skew_value)
+            if statistical_functions == 'gstd':
+                gstd_value = stats.gstd(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(gstd_value)
+            if statistical_functions == 'iqr':
+                iqr_value = stats.iqr(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(iqr_value)
+            if statistical_functions == 'entropy':
+                ent_value = stats.entropy(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(ent_value)
+            if statistical_functions == 'differential_entropy':
+                diff_ent_value = stats.differential_entropy(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(diff_ent_value)
+            if statistical_functions == 'MAD':
+                MAD_value = stats.median_abs_deviation(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(MAD_value)
+
+        return column_names,tmp_lst
 
 def statistical_feature_values_df(dataframe_name,column_name,feature_collection,feature_name,statistical_functions='all'):
 
