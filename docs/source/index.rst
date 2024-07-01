@@ -168,6 +168,13 @@ Get started
    tutorial
    notebooks/usage
 
+.. toctree::
+   :maxdepth: 4
+   :caption: Reference
+
+   api/modules
+.. datasets/CollectionsReference
+
 Indices and tables
 ==================
 
