@@ -45,7 +45,7 @@ def periodic_table(
         Color of elements names
     atomic_number_color : str, default=None
         Color of atomic numbers
-    feature_color = None
+    feature_color : str, default=None
         Color of feature values
     colorbar : bool, default=True
         If colorbar exist or not
