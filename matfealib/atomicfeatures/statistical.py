@@ -77,7 +77,7 @@ def statistical_feature_values(compound,feature_collection,feature_name,statisti
                 column_names.append(feature_name+'_{}'.format(i))
                 tmp_lst.append(var_value)
             if i == 'median':
-                median_value = np.var(stats_fea_vals)
+                median_value = np.median(stats_fea_vals)
                 column_names.append(feature_name+'_{}'.format(i))
                 tmp_lst.append(median_value)
             if i == 'diff':
@@ -168,7 +168,7 @@ def statistical_feature_values(compound,feature_collection,feature_name,statisti
                 column_names.append(feature_name+'_{}'.format(statistical_functions))
                 tmp_lst.append(var_value)
             if statistical_functions == 'median':
-                median_value = np.var(stats_fea_vals)
+                median_value = np.median(stats_fea_vals)
                 column_names.append(feature_name+'_{}'.format(statistical_functions))
                 tmp_lst.append(median_value)
             if statistical_functions == 'diff':
