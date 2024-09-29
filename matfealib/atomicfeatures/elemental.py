@@ -34,7 +34,7 @@ def get_feature_values_df(dataframe_name,column_name,feature_collection,feature_
     pd.concat([dataframe_name,pd.DataFrame(columns=column_names)])
     for i in range(len(dataframe_name)):
         for j in range(dataframe_name.Number_of_Elements.iloc[i]):
-            dataframe_name.loc[dataframe_name.index[i],column_names[j]]=(dataframe_name['Feature'])[i][1][j]
+            dataframe_name.loc[dataframe_name.index[i],column_names[j]]=(dataframe_name['Feature']).iloc[i][1][j]
     
     return dataframe_name.drop(["Feature","Elements","Number_of_Elements"],axis=1)
 

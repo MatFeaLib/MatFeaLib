@@ -230,7 +230,7 @@ def statistical_feature_values_df(dataframe_name,column_name,feature_collection,
 
     dataframe_name["Feature"]=dataframe_name[column_name].apply(statistical_feature_values,feature_collection=feature_collection,feature_name=feature_name,statistical_functions=statistical_functions)
     tmp_dataframe=pd.DataFrame(dataframe_name['Feature'].tolist(), index=dataframe_name.index, columns=['lst_col_names','lst_values'])
-    tmp_col_names_lst=tmp_dataframe.lst_col_names[0]
+    tmp_col_names_lst=tmp_dataframe.lst_col_names.iloc[0]
     tmp_dataframe[tmp_col_names_lst] = pd.DataFrame(tmp_dataframe.lst_values.tolist(), index= tmp_dataframe.index)
     dataframe_name=pd.concat([dataframe_name.drop('Feature',axis=1),tmp_dataframe.drop(['lst_col_names','lst_values'],axis=1)],axis=1)
 
