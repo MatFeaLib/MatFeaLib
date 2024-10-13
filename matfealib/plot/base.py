@@ -9,6 +9,16 @@ import plotly.graph_objects as go
 from pandas.api.types import is_float_dtype
 import warnings
 
+def matplotlib_to_plotly(cmap, pl_entries):
+    h = 1.0/(pl_entries-1)
+    pl_colorscale = []
+
+    for k in range(pl_entries):
+        C = list(map(np.uint8, np.array(cmap(k*h)[:3])*255))
+        pl_colorscale.append([k*h, 'rgb'+str((C[0], C[1], C[2]))])
+
+    return pl_colorscale
+
 colors_guidance = pd.DataFrame(
     dict(
         x = [3.5,3.5,3.5,3.5,3.5,6.0,6.0,6.0,6.0,6.0],
@@ -720,7 +730,7 @@ def periodic_table_custom(
             mode='markers',
             marker=dict(
                 # colorscale='plasma', 
-                colorscale=cmap, 
+                colorscale = matplotlib_to_plotly(colormap, 255), 
                 showscale=True,
                 cmin=data[feature_name].min(),
                 cmax=data[feature_name].max(),
