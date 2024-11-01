@@ -6,6 +6,13 @@ from scipy import stats
 from .base import building_blocks
 from pandas.api.types import is_numeric_dtype
 
+
+def average_abs_deviation(lst):
+    average = np.mean(lst)
+    aad = np.mean(np.abs(np.subtract(lst, average)))
+    return aad
+
+
 def statistical_feature_values(compound,feature_collection,feature_name,statistical_functions='all'):
 
     column_names=[]
@@ -24,6 +31,7 @@ def statistical_feature_values(compound,feature_collection,feature_name,statisti
         var_value      = np.var(stats_fea_vals)
         median_value   = np.median(stats_fea_vals)
         diff_value     = max_value-min_value
+        mode_value     = stats.mode(stats_fea_vals, keepdims=True).mode[0]
         gmean_value    = stats.gmean(stats_fea_vals)
         hmean_value    = stats.hmean(stats_fea_vals)
         pmean_value    = stats.pmean(stats_fea_vals,2)
@@ -35,15 +43,16 @@ def statistical_feature_values(compound,feature_collection,feature_name,statisti
         iqr_value      = stats.iqr(stats_fea_vals)
         ent_value      = stats.entropy(stats_fea_vals)
         # diff_ent_value = stats.differential_entropy(stats_fea_vals)
+        AAD_value      = average_abs_deviation(stats_fea_vals)
         MAD_value      = stats.median_abs_deviation(stats_fea_vals)
 
         tmp_dict={'min':min_value, 'max':max_value, 'sum':sum_value, 
-                  'diff':diff_value, 'mean':mean_value, 'std':std_value, 
-                  'median':median_value, 'var':var_value, 'gmean':gmean_value, 
-                  'hmean':hmean_value, 'pmean': pmean_value, 'kurtosis':kur_value, 
-                  'moment':mom_value, 'expectile':expc_value, 'skew':skew_value, 
-                  'gstd':gstd_value, 'iqr':iqr_value, 'entropy':ent_value, 
-                  'MAD':MAD_value}
+                  'diff':diff_value, 'mean':mean_value, 'mode': mode_value, 
+                  'std':std_value, 'median':median_value, 'var':var_value,
+                  'gmean':gmean_value, 'hmean':hmean_value, 'pmean': pmean_value,
+                  'kurtosis':kur_value, 'moment':mom_value, 'expectile':expc_value,
+                  'skew':skew_value, 'gstd':gstd_value, 'iqr':iqr_value, 'entropy':ent_value,
+                  'AAD':AAD_value, 'MAD':MAD_value}
         
         for i in tmp_dict.keys():
             column_names.append(feature_name+'_{}'.format(i))
@@ -84,6 +93,10 @@ def statistical_feature_values(compound,feature_collection,feature_name,statisti
                 diff_value = (np.max(stats_fea_vals)) - (np.min(stats_fea_vals))
                 column_names.append(feature_name+'_{}'.format(i))
                 tmp_lst.append(diff_value)
+            if i == 'mode':
+                mode_value = stats.mode(stats_fea_vals, keepdims=True).mode[0]
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(mode_value)
             if i == 'gmean':
                 gmean_value = stats.gmean(stats_fea_vals)
                 column_names.append(feature_name+'_{}'.format(i))
@@ -128,6 +141,10 @@ def statistical_feature_values(compound,feature_collection,feature_name,statisti
                 diff_ent_value = stats.differential_entropy(stats_fea_vals)
                 column_names.append(feature_name+'_{}'.format(i))
                 tmp_lst.append(diff_ent_value)
+            if i == 'AAD':
+                AAD_value = average_abs_deviation(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(i))
+                tmp_lst.append(AAD_value)
             if i == 'MAD':
                 MAD_value = stats.median_abs_deviation(stats_fea_vals)
                 column_names.append(feature_name+'_{}'.format(i))
@@ -136,9 +153,9 @@ def statistical_feature_values(compound,feature_collection,feature_name,statisti
         return column_names,tmp_lst
     
     elif statistical_functions != 'all' and isinstance(statistical_functions, str):
-        tmp_dict={'min', 'max', 'sum', 'diff', 'mean', 'std', 'median', 'var', 
+        tmp_dict={'min', 'max', 'sum', 'diff', 'mode', 'mean', 'std', 'median', 'var', 
                   'gmean', 'hmean', 'pmean', 'kurtosis', 'moment', 'expectile', 
-                  'skew', 'gstd', 'iqr', 'entropy', 'differential_entropy', 'MAD'}
+                  'skew', 'gstd', 'iqr', 'entropy', 'differential_entropy', 'AAD', 'MAD'}
         if statistical_functions not in tmp_dict:
             raise ValueError("The `statistical_functions` parameter should be one of the `min`, `max`, `sum`, `diff`, `mean`, `median` or `all` valuse")
         else:
@@ -175,6 +192,10 @@ def statistical_feature_values(compound,feature_collection,feature_name,statisti
                 diff_value = (np.max(stats_fea_vals)) - (np.min(stats_fea_vals))
                 column_names.append(feature_name+'_{}'.format(statistical_functions))
                 tmp_lst.append(diff_value)
+            if statistical_functions == 'mode':
+                mode_value = stats.mode(stats_fea_vals, keepdims=True).mode[0]
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(mode_value) 
             if statistical_functions == 'gmean':
                 gmean_value = stats.gmean(stats_fea_vals)
                 column_names.append(feature_name+'_{}'.format(statistical_functions))
@@ -219,6 +240,10 @@ def statistical_feature_values(compound,feature_collection,feature_name,statisti
                 diff_ent_value = stats.differential_entropy(stats_fea_vals)
                 column_names.append(feature_name+'_{}'.format(statistical_functions))
                 tmp_lst.append(diff_ent_value)
+            if statistical_functions == 'AAD':
+                AAD_value = average_abs_deviation(stats_fea_vals)
+                column_names.append(feature_name+'_{}'.format(statistical_functions))
+                tmp_lst.append(AAD_value)
             if statistical_functions == 'MAD':
                 MAD_value = stats.median_abs_deviation(stats_fea_vals)
                 column_names.append(feature_name+'_{}'.format(statistical_functions))
