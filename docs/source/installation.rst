@@ -11,4 +11,4 @@ then install the package using ``pip``:
 
 .. prompt:: bash $
    
-   pip install matfealib
+   pip install MatFeaLib
