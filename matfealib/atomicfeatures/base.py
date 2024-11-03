@@ -21,7 +21,7 @@ def refine_chem_formula(compound):
                 if len(re.findall('(\d+|[A-Za-z]+)', j))==1:
                     stoichiometry_lst.append( 1*eval(numbers[c]) )
                 else:
-                    stoichiometry_lst.append( eval(re.findall(r"[-+]?(?:\d*\.*\d+)", i)[0])* eval(numbers[c]) )
+                    stoichiometry_lst.append( eval(re.findall(r"[-+]?(?:\d*\.*\d+)", j)[0])* eval(numbers[c]) )
             c+=1
             new_list = [f"{item1}{item2}" for item1, item2 in zip(elements_lst, stoichiometry_lst)]
             new_string = '('+''.join(new_list)+')'

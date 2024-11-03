@@ -26,6 +26,7 @@ from matfealib.atomicfeatures.features import fetch_elemental_features
 from matfealib.atomicfeatures.features import fetch_statistical_features
 
 from matfealib.compositional.element_fraction import fetch_element_fraction
+from matfealib.compositional.wstatistical import fetch_wstatistical_features
 
 from matfealib.plot.periodic_table import periodic_table
 
@@ -52,4 +53,5 @@ __all__ = [
     "lda2015",
     "periodic_table",
     "fetch_element_fraction",
+    "fetch_wstatistical_features",
     ]
