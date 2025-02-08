@@ -12,6 +12,7 @@ dependencies = [
   "matplotlib",
   "plotly",
   "kaleido",
+  "pymatgen",
 ]
 requires-python = ">=3.8"
 authors = [

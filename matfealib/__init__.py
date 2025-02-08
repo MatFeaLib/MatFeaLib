@@ -28,6 +28,8 @@ from matfealib.atomicfeatures.features import fetch_statistical_features
 from matfealib.compositional.element_fraction import fetch_element_fraction
 from matfealib.compositional.wstatistical import fetch_wstatistical_features
 
+from matfealib.bulk.bulk import fetch_bulk_features
+
 from matfealib.plot.periodic_table import periodic_table
 
 __all__ = [
@@ -54,4 +56,5 @@ __all__ = [
     "periodic_table",
     "fetch_element_fraction",
     "fetch_wstatistical_features",
+    "fetch_bulk_features",
     ]
