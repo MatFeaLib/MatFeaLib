@@ -3,7 +3,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 import pymatgen
-from tqdm.autonotebook import tqdm
+from tqdm.auto import tqdm
+#from tqdm.autonotebook import tqdm
 # from tqdm import tqdm
 from pymatgen.core.structure import IStructure
 from pymatgen.analysis.local_env import (
