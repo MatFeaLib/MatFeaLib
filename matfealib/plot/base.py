@@ -296,7 +296,7 @@ def periodic_table_custom(
         else:
             data = data.dropna(subset = feature_name).copy()
             elements.loc[:, 'color'] = missing_color
-            elements.loc[:, feature_name]  = np.NaN
+            elements.loc[:, feature_name]  = np.nan
             for i, smbl in enumerate(data.chemical_symbol):
                 element_entry = elements.symbol[
                     elements.symbol.str.lower() == smbl.lower()
@@ -790,7 +790,7 @@ def periodic_table_default(
             raise ValueError('Feature name is nessesary for visualizing the periodic table. Please set `feature_name` argument')
         else:
             data = data.dropna(subset=feature_name).copy()
-            elements.loc[:, feature_name] = np.NaN
+            elements.loc[:, feature_name] = np.nan
             for i, smbl in enumerate(data.chemical_symbol):
                 element_entry = elements.symbol[elements.symbol.str.lower() == smbl.lower()]
                 if (element_entry.empty == True):
